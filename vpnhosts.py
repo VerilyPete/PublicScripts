@@ -5,7 +5,7 @@ from subprocess import call
 from sys import platform
 
 """Edit these placeholders to reflect your host entries. You can add additional
-entries if needed - just add the name of the entries to the hostlist in the
+entries if needed - just add the name of the variables to the hostlist in the
 checkhosts function.
 """
 
