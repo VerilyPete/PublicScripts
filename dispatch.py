@@ -43,14 +43,14 @@ def dispatch(localip, leasedip):
     if localip == args.leasedip:
         if mp3:
             for m in mp3:
-                call(['scp', m, 'envy:~/music/'])
+                call(['scp', m, 'envy:~/pdf/'])
                 os.remove(m)
         if pdf:
-        	for p in pdf:
-        		call(['scp', p, 'pdf:~/pdf/'])
-        		os.remove(p)
+            for p in pdf:
+                call(['scp', p, 'pdf:~/pdf/'])
+                os.remove(p)
     else:
-    	exit()
+        exit()
 
 
 def main(args):
