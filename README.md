@@ -1,2 +1,3 @@
 # PublicScripts
-Somewhere to leave simple scripts that are suitable for public consumption.
+
+Most of my development falls under my employer's NDA. This is somewhere to park the fun little projects that I can share with the outside world.
