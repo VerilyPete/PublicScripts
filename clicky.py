@@ -9,7 +9,8 @@ import time
 
 def timer(freq, length, delay):
     """Takes user-defined freq/length and (if non-default) delay and fires click() with the 
-    aforementioned frequency."""
+    aforementioned frequency.
+    """
 
     time.sleep(float(delay))
     rep_count = 0
