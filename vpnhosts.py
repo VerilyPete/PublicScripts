@@ -1,5 +1,9 @@
 #!/usr/bin/python
 
+"""Simple windows/osx compatible script to add or remove entries from your hosts file. Requires sudo/run as admin to function.
+Some of my testing requires connecting to a test server via VPN and using hosts entries to ignore DNS. I built this script to automate that task.
+"""
+
 import os
 from subprocess import call
 from sys import platform
