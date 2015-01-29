@@ -1,5 +1,12 @@
 #!/usr/local/opt/pypy
 
+"""This file is run by a launchd user agent on my OS X laptop that watches ~/Downloads. The intent is to grab any mp3 or pdf files as they're downloaded and send them (using scp) to the appropriate folder on my linux server.
+
+Since it'd be silly to try and scp those files if I'm not on my local network, the script begins by testing to see if it can find my router at it's (somewhat unique) IP. If it can't find the router, it assumes I'm not at home and the files will wait.
+
+I use pypy for this script, but regular python will work perfectly as well. Just update the shebang line if needed.
+"""
+
 import argparse
 import os
 import socket
