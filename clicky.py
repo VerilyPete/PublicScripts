@@ -1,9 +1,5 @@
 #!/usr/bin/python
 
-"""Quick & dirty script to create screenshots at user-defined intervals for 
-a user-defined length of time under OS X.
-"""
-
 import argparse
 import datetime
 import os
@@ -12,9 +8,8 @@ import time
 
 
 def timer(freq, length, delay):
-    """Takes user-defined freq/length and (if non-default) delay and fires click() with the 
-    aforementioned frequency.
-    """
+    """Takes user-defined freq/length and (if non-default) delay and fires click() with the
+    aforementioned frequency."""
 
     time.sleep(float(delay))
     rep_count = 0
@@ -26,9 +21,9 @@ def timer(freq, length, delay):
 
 def click():
     """Calls subprocess to run screencapture on the main screen only, dumping files in ~/Desktop/capture"""
-    
-    subprocess.call(['screencapture', '-m', os.path.join(os.path.expanduser('~'), 'Desktop', 'capture', 
-        ((datetime.datetime.now().time()).isoformat()[0:8]).replace(':', '.') + '.png')])
+
+    subprocess.call(['screencapture', '-m', os.path.join(os.path.expanduser('~'), 'Desktop', 'capture',
+                    ((datetime.datetime.now().time()).isoformat()[0:8]).replace(':', '.') + '.png')])
 
 
 def main(args):
