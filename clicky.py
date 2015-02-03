@@ -1,5 +1,9 @@
 #!/usr/bin/python
 
+"""Quick & dirty script to create screenshots at user-defined intervals for 
+a user-defined length of time under OS X.
+"""
+
 import argparse
 import datetime
 import os
