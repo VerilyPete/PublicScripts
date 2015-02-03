@@ -28,7 +28,7 @@ class Get_Folder_Permissions:
 
     def get_permissions(self, filepath):
         """Gives the octal permission of a file."""
-      return oct(os.stat(filepath).st_mode & 0777)
+        return oct(os.stat(filepath).st_mode & 0777)
 
     
 def in_first_not_in_second(first_dict, second_dict):
