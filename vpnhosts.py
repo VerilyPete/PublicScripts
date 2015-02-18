@@ -1,11 +1,15 @@
 #!/usr/bin/python
 
+"""Simple windows/osx compatible script to add or remove entries from your hosts file. Requires sudo/run as admin to function. Some of my testing requires connecting to a test server via VPN and using hosts entries to ignore DNS. I built this script to automate that task.
+-Some of my testing requires connecting to a test server via VPN and using hosts entries to ignore DNS. I built this script to automate that task.
+"""
+
 import os
 from subprocess import call
 from sys import platform
 
-HOST1 = "146.215.250.206\twww.sonycreativesoftware.com\n"
-HOST2 = "146.215.250.207\twww.mediasoftwareapps.com\n"
+HOST1 = "<insert host ip>\t<insert hostname>\n"
+HOST2 = "<insert host ip>\t<insert hostname>\n"
 
 if platform == 'darwin':
     PATH_TO_HOSTS = "/private/etc/hosts"
