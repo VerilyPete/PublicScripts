@@ -8,6 +8,11 @@ import os
 from subprocess import call
 from sys import platform
 
+"""Edit these placeholders to reflect your host entries. You can add additional
+entries if needed - just add the name of the variables to the hostlist in the
+checkhosts function.
+"""
+
 HOST1 = "<insert host ip>\t<insert hostname>\n"
 HOST2 = "<insert host ip>\t<insert hostname>\n"
 
