@@ -1,19 +1,11 @@
 #!/usr/bin/python
 
-"""Simple windows/osx compatible script to add or remove entries from your hosts file. Requires sudo/run as admin to function. Some of my testing requires connecting to a test server via VPN and using hosts entries to ignore DNS. I built this script to automate that task.
-"""
-
 import os
 from subprocess import call
 from sys import platform
 
-"""Edit these placeholders to reflect your host entries. You can add additional
-entries if needed - just add the name of the variables to the hostlist in the
-checkhosts function.
-"""
-
-HOST1 = "<insert host ip>\t<insert hostname>\n"
-HOST2 = "<insert host ip>\t<insert hostname>\n"
+HOST1 = "146.215.250.206\twww.sonycreativesoftware.com\n"
+HOST2 = "146.215.250.207\twww.mediasoftwareapps.com\n"
 
 if platform == 'darwin':
     PATH_TO_HOSTS = "/private/etc/hosts"
@@ -21,7 +13,7 @@ if platform == 'darwin':
     permission_error = 'Permission denied. Use sudo.'
 elif platform == 'win32':
     PATH_TO_HOSTS = os.path.join(os.path.expandvars('%SystemRoot%'), 'system32',
-     'drivers', 'etc', 'hosts')
+                                 'drivers', 'etc', 'hosts')
     CALL_STRING = (['cmd.exe', '/c', 'type', PATH_TO_HOSTS])
     permission_error = 'Permission denied. Open an admin commandline.'
 
@@ -30,7 +22,7 @@ def checkhosts():
     """ Opens hosts file at supplied path and checks for hosts listed in hostlist.
     If entries in hostlist aren't found in hosts file, they're written. If they are
     found, removehosts is invoked and hostlist & hostsfile objects are passed to it.
-    Additional hosts can be added by defining them as constants and adding their name 
+    Additional hosts can be added by defining them as constants and adding their name
     to hostlist.
 
     """
@@ -38,14 +30,14 @@ def checkhosts():
     writtenentries = []
     try:
         with open(PATH_TO_HOSTS, 'r') as readhosts:
-            hostsfile = readhosts.readlines()            
+            hostsfile = readhosts.readlines()
     except (OSError, IOError, UnboundLocalError):
         print '\nHosts file not found. Is your path correct?\n'
-    try:      
+    try:
         with open(PATH_TO_HOSTS, 'a+') as hosts:
-            if not any (x in hostlist for x in hostsfile):
-                [writtenentries.append(entry.rstrip('\n')) for entry in hostlist 
-                if entry not in hostsfile]
+            if not any(x in hostlist for x in hostsfile):
+                [writtenentries.append(entry.rstrip('\n')) for entry in hostlist
+                    if entry not in hostsfile]
                 [hosts.write(entry) for entry in hostlist if entry not in hostsfile]
                 for x in writtenentries:
                     print '%s added to %s' % (x, PATH_TO_HOSTS)
@@ -69,12 +61,10 @@ def removehosts(hostlist, hostsfile):
         print '%s removed from %s' % (x, PATH_TO_HOSTS)
 
 
-
 def main():
     checkhosts()
     print '\n Contents of %s \n' % (PATH_TO_HOSTS)
     call(CALL_STRING)
-
 
 
 if __name__ == '__main__':
