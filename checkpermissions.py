@@ -1,17 +1,15 @@
-! /usr/bin/env python
+#!/usr/bin/env python
 
 """I built this script after an incident where another engineer had dragged an OS X .app
 through a windows share and damaged the permissions, thereby making the .app only run when
 logged in as the installed user. BeyondCompare for OS X doesn't yet support permission
 comparison, so I threw this script together.
-
 This script simply compares two folder locations, comparing
 permissions and files and reporting any mismatches or missing/new files.
 """
 
 import argparse
 import os
-
 
 
 class Get_Folder_Permissions:
@@ -30,9 +28,9 @@ class Get_Folder_Permissions:
         """Gives the octal permission of a file."""
         return oct(os.stat(filepath).st_mode & 0777)
 
-    
+
 def in_first_not_in_second(first_dict, second_dict):
-    """Expects two dictionaries as input. Returns set containing 
+    """Expects two dictionaries as input. Returns set containing
     all items found in first_dict but not in second_dict."""
     in_first_not_in_second_set = set([])
     in_first_not_in_second_set = set(first_dict.pathdict.keys()) - set(second_dict.pathdict.keys())
