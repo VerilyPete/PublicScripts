@@ -26,7 +26,7 @@ class Get_Folder_Permissions:
 
     def get_permissions(self, filepath):
         """Gives the octal permission of a file."""
-        return oct(os.stat(filepath).st_mode & 0777)
+        return oct(os.stat(filepath).st_mode & 0o777)
 
 
 def in_first_not_in_second(first_dict, second_dict):
@@ -47,19 +47,19 @@ def print_and_number(first_dict, second_dict, print_string):
         print_string = "%s items added to %s.\n\n\n" % (str(len(info_set)), first_dict.filepath)
     if print_string == "diff":
         print_string = "%s items from %s not found in %s.\n" % (str(len(info_set)), first_dict.filepath, second_dict.filepath)
-    print print_string
+    print(print_string)
     for files in sorted(info_set):
-        print files
-    print "\n\n\n"
+        print(files)
+    print("\n\n\n")
 
 
 def file_permissions_changed(first_dict, second_dict):
     """Takes two dictionaries with filename/permissions as key/value as input.
     Compares permissions, reporting any mismatches."""
-    for key in first_dict.pathdict.keys():
+    for key in list(first_dict.pathdict.keys()):
         if key in second_dict.pathdict:
             if first_dict.pathdict[key] != second_dict.pathdict[key]:
-                print "Value of %s changed. Old value %s, new value %s." % (key, first_dict.pathdict[key], second_dict.pathdict[key])
+                print("Value of %s changed. Old value %s, new value %s." % (key, first_dict.pathdict[key], second_dict.pathdict[key]))
 
 
 def main(args):
@@ -67,7 +67,7 @@ def main(args):
     tp = Get_Folder_Permissions(args.testpath)
     unmatchedfiles = set(gp.pathdict.items()) ^ set(tp.pathdict.items())
     if not (unmatchedfiles):
-        print "Files and Permissions match!"
+        print("Files and Permissions match!")
     else:
         print_and_number(gp, tp, "diff")
         print_and_number(tp, gp, "add")
