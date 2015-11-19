@@ -41,7 +41,7 @@ def checkhosts():
         with open(PATH_TO_HOSTS, 'r') as readhosts:
             hostsfile = readhosts.readlines()
     except (OSError, IOError, UnboundLocalError):
-        print '\nHosts file not found. Is your path correct?\n'
+        print('\nHosts file not found. Is your path correct?\n')
     try:
         with open(PATH_TO_HOSTS, 'a+') as hosts:
             if not any(x in hostlist for x in hostsfile):
@@ -49,11 +49,11 @@ def checkhosts():
                     if entry not in hostsfile]
                 [hosts.write(entry) for entry in hostlist if entry not in hostsfile]
                 for x in writtenentries:
-                    print '%s added to %s' % (x, PATH_TO_HOSTS)
+                    print('%s added to %s' % (x, PATH_TO_HOSTS))
             else:
                 removehosts(hostlist, hostsfile)
     except (IOError, OSError):
-        print permission_error
+        print(permission_error)
         exit()
 
 
@@ -67,12 +67,12 @@ def removehosts(hostlist, hostsfile):
     with open(PATH_TO_HOSTS, 'w') as writehosts:
         writehosts.writelines([x for x in hostsfile])
     for x in removedentries:
-        print '%s removed from %s' % (x, PATH_TO_HOSTS)
+        print('%s removed from %s' % (x, PATH_TO_HOSTS))
 
 
 def main():
     checkhosts()
-    print '\n Contents of %s \n' % (PATH_TO_HOSTS)
+    print('\n Contents of %s \n' % (PATH_TO_HOSTS))
     call(CALL_STRING)
 
 
